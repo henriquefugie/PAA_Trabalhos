@@ -1,39 +1,35 @@
-def torre_de_hanoi(n, origem, destino, auxiliar):
-    if n == 1:
-        print(f"Mova o disco 1 de {origem} para {destino}")
-        return
-    torre_de_hanoi(n - 1, origem, auxiliar, destino)
-    print(f"Mova o disco {n} de {origem} para {destino}")
-    torre_de_hanoi(n - 1, auxiliar, destino, origem)
+def junta_string(arr):
+    aux = ""
+    for i in arr:
+        aux = aux + str(i)
+    aux = int(aux)
+    return aux
 
-def resolver_torre_de_hanoi(n, origem, destino, auxiliar):
-    if n == 1:
-        print_estado_pinos()
-        print(f"Mova o disco 1 de {origem} para {destino}")
-        pinos[destino].append(pinos[origem].pop())
-        print_estado_pinos()
-        return True
-    if resolver_torre_de_hanoi(n - 1, origem, auxiliar, destino):
-        print_estado_pinos()
-        print(f"Mova o disco {n} de {origem} para {destino}")
-        pinos[destino].append(pinos[origem].pop())
-        print_estado_pinos()
-        if resolver_torre_de_hanoi(n - 1, auxiliar, destino, origem):
-            return True
-    return False
+def p1084(n, d, arr, cont):
+    if(n == d):
+        arr = junta_string(arr)
+        return arr
+    elif cont == len(arr):
+        print("Impossível, pois a quantidade de números que vão ser apagados é maior do que a quantidade de números")
+    else:
+        while(cont != 0):
+            for i in arr:
+                aux = min(arr)
+                arr.remove(aux)
+                cont = cont - 1
+                break
+        arr = junta_string(arr)
+        return arr
+        
 
-def print_estado_pinos():
-    print("Estado dos pinos:")
-    for pino, discos in pinos.items():
-        print(f"{pino}: {discos}")
-    print()
 
-n = int(input("Digite o número de discos: "))
-pinos = {
-    'A': list(range(n, 0, -1)),
-    'B': [],
-    'C': []
-}
-print_estado_pinos()
-if not resolver_torre_de_hanoi(n, 'A', 'C', 'B'):
-    print("Não foi possível encontrar uma solução.")
+n = int(input("Digite a quantidade de números que foram escritos: "))
+d = int(input("Digite quantos números devem ser apagados: "))
+num = int(input("Digite o número que vai ser analisado: "))
+aux = str(num)
+arr = []
+for i in aux:
+    arr.append(int(i))   
+print("O Número Original digitado foi: {}".format(aux)) 
+res = p1084(n, d, arr, d)
+print("A resposta é: {}".format(res))
