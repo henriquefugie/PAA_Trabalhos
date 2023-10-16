@@ -1,7 +1,7 @@
 import random
 
 def cruzada(vetor, inicio, meio, fim):
-    max_esq = -999999  # Inicializa a maior soma do subvetor à esquerda com um valor muito baixo
+    max_esq = 0  # Inicializa a maior soma do subvetor à esquerda com um valor muito baixo
     max_atual = 0     # Inicializa a soma atual
     inicio_cruzamento = meio  # Inicializa o índice de início do subvetor cruzado
     fim_cruzamento = meio    # Inicializa o índice de fim do subvetor cruzado
@@ -13,7 +13,7 @@ def cruzada(vetor, inicio, meio, fim):
             max_esq = max_atual
             inicio_cruzamento = i
 
-    max_dir = -999999  # Inicializa a maior soma do subvetor à direita com um valor muito baixo
+    max_dir = 0  # Inicializa a maior soma do subvetor à direita com um valor muito baixo
     max_atual = 0     # Reinicializa a soma atual
 
     # Encontra a maior soma no subvetor à direita
