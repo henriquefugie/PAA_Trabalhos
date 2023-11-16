@@ -1,6 +1,8 @@
 import random
 import math
 
+#https://www.baeldung.com/cs/non-recursive-merge-sort exemplo interativo do mergesort
+#fazer com recursão
 def cruzada(vetor, inicio, meio, fim):
     max_esq = 0
     max_atual = 0
@@ -88,7 +90,6 @@ def verifica(esq, meio, direita):
     elif maior == 1:
         return s2, direita
     return s3, meio
-
 
 print("1. Array Aleatorio")
 print("2. Array Digitado")
