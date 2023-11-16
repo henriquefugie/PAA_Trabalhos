@@ -1,4 +1,6 @@
+#Trabalho 2 PAA
 #trabalho apresentado
+
 import os       #listar os sudokus da pasta sudoku_exemplos
 import random       #Escolher aleatoriamente um dos sudokus da pasta
 import time 	    #Calcular o tempo que o solver demora para solucionar o sudoku
