@@ -4,6 +4,7 @@ def maior_premio(n, d, numero):
     for digito in numero:
         print(pilha)
         # Enquanto ainda precisamos remover dígitos, há elementos na pilha e o último elemento é menor que o digito atual
+        print()
         while d > 0 and pilha and pilha[-1] < digito:
             pilha.pop()
             d -= 1
