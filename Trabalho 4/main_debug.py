@@ -37,4 +37,3 @@ string_b = input().strip()
 
 # Saída
 print(menor_tamanho_subsequencia(string_a, string_b))
-
