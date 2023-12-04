@@ -33,7 +33,7 @@ def maiorSubArrayRecursivo(vetor, inicio, fim):
     esquerda = maiorSubArrayRecursivo(vetor, inicio, meio)
     direita = maiorSubArrayRecursivo(vetor, meio + 1, fim)
     cruzamento = cruzada(vetor, inicio, meio, fim)
-    soma, cadeia = verifica(esquerda, cruzamento, direita)
+    cadeia = verifica(esquerda, cruzamento, direita)
 
     return cadeia
 
@@ -43,11 +43,11 @@ def verifica(esq, meio, direita):
     s3 = sum(meio)
 
     if s1 >= s2 and s1 >= s3:
-        return s1, esq
+        return esq
     elif s2 >= s1 and s2 >= s3:
-        return s2, direita
+        return direita
     else:
-        return s3, meio
+        return meio
 
 print("1. Array Aleatorio")
 print("2. Array Digitado")
