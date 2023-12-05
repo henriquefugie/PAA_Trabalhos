@@ -1,4 +1,4 @@
-#Trabalho 2 PAA
+#Trabalho 1 PAA
 #trabalho apresentado
 
 import os       #listar os sudokus da pasta sudoku_exemplos
