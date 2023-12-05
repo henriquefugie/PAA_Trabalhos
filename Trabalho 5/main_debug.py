@@ -2,19 +2,18 @@ def maior_premio(n, d, numero):
     pilha = []
 
     for digito in numero:
-        print(pilha)
-        # Enquanto ainda precisamos remover dígitos, há elementos na pilha e o último elemento é menor que o digito atual
-        print()
         while d > 0 and pilha and pilha[-1] < digito:
+            print(f"O digito {digito} é maior que {pilha[-1]} que sera removido\n")
             pilha.pop()
+            print(f"Pilha apos a remocao do ultimo digito que ela possuia {pilha}\n")
             d -= 1
         pilha.append(digito)
-
-    # Se ainda houver dígitos a serem removidos, remova do final
+        print(f"Visualizacao da pilha apos adicionar um novo digito {pilha}\n")
+        
+    print(f"Visualizacao da pilha antes de remover os {d} que faltaram ser removidos {pilha}\n")
     pilha = pilha[:-d] if d > 0 else pilha
-    print(pilha)
-
-    # Junte os dígitos para formar o maior prêmio como uma string
+    print(f"Visualizacao da pilha final {pilha}\n")
+    
     resultado = ''.join(pilha)
 
     return resultado
@@ -23,6 +22,7 @@ def main():
     while True:
         n, d = map(int, input().split())
         if n == 0 and d == 0:
+            print(f"Entrada que finaliza o programa encontrada")
             break
 
         numero = input().strip()
