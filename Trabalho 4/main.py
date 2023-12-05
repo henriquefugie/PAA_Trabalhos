@@ -1,3 +1,5 @@
+#Trabalho 4 PAA
+
 def menor_tamanho_subsequencia(a, b):
     #Inicio da funcao principal do código, que faz a geracao da tabela dp e faz  o preenchimento da mesma, utilizando valores anteriores para continuar a solucao.
     # funcao simples para adquirir o tamanho das strings e gerar a matriz do taamnho que as astrings possuem mais 1, para garantir que nos casos mais simples e base,
