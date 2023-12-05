@@ -1,4 +1,5 @@
 #Trabalho 4 PAA
+#trabalho apresentado
 
 def menor_tamanho_subsequencia(a, b):
     #Inicio da funcao principal do código, que faz a geracao da tabela dp e faz  o preenchimento da mesma, utilizando valores anteriores para continuar a solucao.
