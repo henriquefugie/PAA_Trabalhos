@@ -2,87 +2,52 @@ import random
 import math
 
 def cruzada(vetor, inicio, meio, fim):
-    max_esq = 0  # Inicializa a maior soma do subvetor à esquerda com um valor muito baixo
-    max_atual = 0     # Inicializa a soma atual
-    inicio_cruzamento = meio  # Inicializa o índice de início do subvetor cruzado
-    fim_cruzamento = meio    # Inicializa o índice de fim do subvetor cruzado
+    max_esq = max_dir = float('-inf')
+    max_atual = 0
+    inicio_cruzamento = fim_cruzamento = meio
 
     # Encontra a maior soma no subvetor à esquerda
-    for i in range(meio, inicio -1, -1):
-        max_atual = max_atual + vetor[i]
+    for i in range(meio, inicio - 1, -1):
+        max_atual += vetor[i]
         if max_atual > max_esq:
             max_esq = max_atual
             inicio_cruzamento = i
 
-    max_dir = 0  # Inicializa a maior soma do subvetor à direita com um valor muito baixo
-    max_atual = 0     # Reinicializa a soma atual
+    max_atual = 0
 
     # Encontra a maior soma no subvetor à direita
     for i in range(meio + 1, fim + 1):
-        max_atual = max_atual + vetor[i]
+        max_atual += vetor[i]
         if max_atual > max_dir:
             max_dir = max_atual
             fim_cruzamento = i
             
-    aux = vetor[inicio_cruzamento:fim_cruzamento+1]  # Captura o subvetor com a maior soma cruzada
+    aux = vetor[inicio_cruzamento:fim_cruzamento + 1]
     return aux
 
-def maiorSubArray(a, inicio, fim):
-    max_atual = max_global = 0
-    aux = []
-    i1 = i2 = f1 = f2 = inicio
-    ig1 = ig2 = fg1 = fg2 = inicio
+def maiorSubArrayRecursivo(vetor, inicio, fim):
+    if inicio == fim:
+        return vetor[inicio:inicio + 1]
 
-    # Encontra a maior soma do subvetor
-    for i in range(inicio, fim):
-        
-        if a[i] > max_atual + a[i]:
-            max_atual =  a[i]
-            i1 = i
-            f1 = i
-        else:
-            max_atual = max_atual + a[i]
-            f1 = i
+    meio = (inicio + fim) // 2
+    esquerda = maiorSubArrayRecursivo(vetor, inicio, meio)
+    direita = maiorSubArrayRecursivo(vetor, meio + 1, fim)
+    cruzamento = cruzada(vetor, inicio, meio, fim)
+    cadeia = verifica(esquerda, cruzamento, direita)
 
-        if max_atual > max_global:
-            max_global = max_atual
-            ig1 = i1
-            fg1 = f1
-
-    aux = a[ig1:fg1+1]  # Captura o subvetor com a maior soma
-    return aux, ig1, fg1
+    return cadeia
 
 def verifica(esq, meio, direita):
-    s1 = 0
-    s2 = 0
-    s3 = 0
+    s1 = sum(esq)
+    s2 = sum(direita)
+    s3 = sum(meio)
 
-    # Calcula a soma dos subvetores esquerdo, cruzado e direito
-    for i in range(len(esq)):
-        s1 = s1 + esq[i] 
-    for i in range(len(direita)):
-        s2 = s2 + direita[i]
-    for i in range(len(meio)):
-        s3 = s3 + meio[i]  
-
-    # Compara as somas e retorna a maior soma e o subvetor correspondente
-    if (s1 > s2) and (s1 > s3):
-        return s1, esq
-    if (s2 > s1) and (s2 > s3):
-        return s2, direita
-    if (s3 > s1) and (s3 > s2):
-        return s3, meio
-    aux = []
-    aux.append(s1)
-    aux.append(s2)
-    aux.append(s3)
-    maior = aux.index(max(aux))
-    if maior == 0:
-        return s1, esq
-    elif maior == 1:
-        return s2, direita
-    return s3, meio
-
+    if s1 >= s2 and s1 >= s3:
+        return esq
+    elif s2 >= s1 and s2 >= s3:
+        return direita
+    else:
+        return meio
 
 print("1. Array Aleatorio")
 print("2. Array Digitado")
@@ -93,15 +58,11 @@ if escolha == "1":
 elif escolha == "2":
     array_digitado = input("Digite o array: ")
     array = [int(numero) for numero in array_digitado.split(',')]
-    
+
 print(array)
-meio = math.ceil(len(array)/2)
 
-# Chama as funções para encontrar a maior soma em subvetores
-esquerda, e1, ef1 = maiorSubArray(array, 0, meio)
-direita, d1, df1 = maiorSubArray(array, meio, len(array))
-cruzamento = cruzada(array, e1, meio, df1)
+# Chama a função recursiva para encontrar a maior soma em subvetores
+subvetor_max = maiorSubArrayRecursivo(array, 0, len(array) - 1)
+soma_max = sum(subvetor_max)
 
-# Chama a função de verificação para encontrar a maior soma global e o subvetor correspondente
-soma, cadeia = verifica(esquerda, cruzamento, direita)
-print("A maior soma é {} encontrada na subcadeia {}".format(soma, cadeia))
+print("A maior soma é {} encontrada na subcadeia {}".format(soma_max, subvetor_max))
