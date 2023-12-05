@@ -1,4 +1,5 @@
 #Trabalho 5 PAA
+#trabalho apresentado
 
 def maior_premio(n, d, numero):
     # Este código foi o mesmo utilizado no beecrowd, então alguns pontos como, retorno de funcoes e entradas foram alteradas para que seja aceito no beecrowd
