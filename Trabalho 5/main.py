@@ -1,6 +1,7 @@
-# Este código foi o mesmo utilizado no beecrowd, então alguns pontos como, retorno de funcoes e entradas foram alteradas para que seja aceito no beecrowd
+#Trabalho 5 PAA
 
 def maior_premio(n, d, numero):
+    # Este código foi o mesmo utilizado no beecrowd, então alguns pontos como, retorno de funcoes e entradas foram alteradas para que seja aceito no beecrowd
     
     # A funcao maior_premio comeca inciando uma pilha, apenas para manipular de forma correta e precisa o numero, sem que algum numero saia do local
     pilha = []
