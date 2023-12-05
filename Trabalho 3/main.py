@@ -5,7 +5,12 @@ import math
 
 def cruzada(vetor, inicio, meio, fim):
     
-    # 
+    # A funcao cruzada é responsável por encontrar o array que é equivalente a juncao do array que foi encontrado na esquerda com o que foi encontrado na direita,
+    # de forma que ele recebe o valor do meio e vai percorrendo a area da esquerda até encontrar o inicio do array, de forma que caso a adicao da posicao do array nao faca difererenca
+    # para a soma da esquerda, ele nao sera adicionado no cruzamento, mesma coisa para a direita, onde ele comeca do meio do vetor, e vai até o final, utilizando a mesma lógica
+    # que foi feita para encontrar a parte da esquerda.
+    # Um ponto imporante a se destacar é que como a funcao cruzada está no meio das chamadas recursivas, os índices de inicio e fim durante as solucoes de divisoes está correto,
+    # pode ser observado no main_debug, os indices vao se adaptando dependendo de qual momento a solucao está, fazendo com que nao seja necessário identificar precisamente a posicao.
     max_esq = max_dir = float('-inf')
     max_atual = 0
     inicio_cruzamento = fim_cruzamento = meio
